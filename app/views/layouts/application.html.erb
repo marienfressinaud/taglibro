@@ -9,6 +9,25 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="notifications">
+      <%- if notice %>
+        <div class="notification-notice">
+          <%= notice %>
+        </div>
+      <% end %>
+      <%- if alert %>
+        <div class="notification-alert">
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="app-content">
+      <%- if current_user %>
+        <div>Bienvenue <%= current_user.email %> !</div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
