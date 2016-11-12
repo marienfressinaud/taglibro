@@ -28,7 +28,32 @@ Il reste à documenter :
 Pour ce qui est du suivi du projet, tout se passe pour le moment sur GitHub :
 https://github.com/marienfressinaud/taglibro/projects/1 (i.e. projet MVP).
 
-## Messages de commit
+## Développement
+
+### Configuration de PostgreSQL
+
+La configuration présente dans `config/database.yml` implique que nous nous
+basons sur le nom de l'utilisateur Linux actuellement connecté. Pour configurer
+Postgres, il suffit de suivre les instructions suivantes (testé sous Fedora 24,
+les instructions peuvent varier selon les distributions) :
+
+```bash
+$ whoami
+john_doe
+$ sudo -u postgres psql postgres
+postgres=# CREATE ROLE john_doe WITH SUPERUSER LOGIN;
+postgres=# \q
+$ sudo vim /var/lib/pgsql/data/pg_hba.conf
+# IPv4 local connections:
+- host    all             all             127.0.0.1/32            ident
++ host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+- host    all             all             ::1/128                 ident
++ host    all             all             ::1/128                 trust
+$ sudo systemctl restart postgresql
+```
+
+### Messages de commit
 
 Afin de garder un historique clair et de pouvoir générer un changelog
 facilement, il est recommandé de configurer Git pour qu'il prenne en compte le
