@@ -1,6 +1,6 @@
-<GitHub ticket id>: <If applied, your commit will...>
+[#GitHubTicketId] <If applied, your commit will...>
 # For merge commits:
-# <GitHub ticket id>: [nature] <If applied, your commit will...>
+# [#GitHubTicketId] [nature] <If applied, your commit will...>
 # [nature] can be "add", "fix", "doc" or "tec"
 
 Any relevant information about why you do this change, how you do it.
