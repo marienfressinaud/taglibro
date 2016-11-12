@@ -1,24 +1,29 @@
-# README
+# Taglibro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ceci est une version préliminaire de Taglibro, un réseau social anonyme sous
+forme de "journal intime".
 
-Things you may want to cover:
+Pour le moment je mets encore en place les différents outils de développement
+et de déploiement donc les choses vont pas mal bouger.
 
-* Ruby version
+Si vous souhaitez lancer l'application malgré tout, assurez-vous d'avoir Ruby
+2.3 installé sur votre PC et de cloner le dépôt de Taglibro dans votre espace
+de travail. Ensuite, lancez ces quelques commandes :
 
-* System dependencies
+```bash
+$ bin/bundle install
+$ bin/rails s
+```
 
-* Configuration
+L'application devrait se lancer sur http://localhost:3000.
 
-* Database creation
+Il reste à documenter :
 
-* Database initialization
+- la configuration
+- la création et initialisation de la base de données
+- le lancement de la suite de tests
+- la phase de déploiement
+- les différentes manières de contribuer
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pour ce qui est du suivi du projet, tout se passe pour le moment sur GitHub :
+https://github.com/marienfressinaud/taglibro/projects/1 (i.e. projet MVP).
