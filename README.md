@@ -27,3 +27,19 @@ Il reste à documenter :
 
 Pour ce qui est du suivi du projet, tout se passe pour le moment sur GitHub :
 https://github.com/marienfressinaud/taglibro/projects/1 (i.e. projet MVP).
+
+## Messages de commit
+
+Afin de garder un historique clair et de pouvoir générer un changelog
+facilement, il est recommandé de configurer Git pour qu'il prenne en compte le
+message de template de commit fourni dans `.gitmessage`. Pour cela, éditez le
+fichier `.git/config`:
+
+```
+...
+[commit]
+  template: .gitmessage
+```
+
+Ce message force la structure du message de commit pour le rendre plus
+explicite.
