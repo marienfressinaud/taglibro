@@ -54,7 +54,7 @@ RSpec.describe "User session management" do
     end
   end
 
-  describe "login" do
+  describe "login and logout" do
     before do
       @user = User.create! email: 'john@doe.com',
                            password: 'secret',
@@ -77,11 +77,20 @@ RSpec.describe "User session management" do
       end
     end
 
-    it "redirects to the home page" do
+    it "redirects to the home page when log in is successful" do
       expect(response).to redirect_to('/')
       follow_redirect!
       expect(response).to have_http_status(:success)
       expect(response.body).to include(@user.email)
+    end
+
+    it "redirects to the home page when log out is successful" do
+      post '/logout'
+
+      expect(response).to redirect_to('/')
+      follow_redirect!
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include('Vous êtes désormais déconnecté.')
     end
   end
 

@@ -12,7 +12,7 @@
     <div class="app-header">
       <%= link_to 'Taglibro', root_path %>
       <% if current_user %>
-        <div><%= current_user.email %> !</div>
+        <div><%= current_user.email %> - <%= link_to 'Déconnexion', logout_path, method: :post %></div>
       <% end %>
     </div>
 
