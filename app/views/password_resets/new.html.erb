@@ -1,0 +1,12 @@
+<%= form_tag password_resets_path, method: :post do %>
+
+  <div class="form-group">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+
+  <div class="form-group form-group-actions">
+    <%= submit_tag 'Réinitialiser' %>
+  </div>
+
+<% end %>
