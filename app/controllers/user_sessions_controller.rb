@@ -15,5 +15,10 @@ class UserSessionsController < ApplicationController
     end
   end
 
+  def destroy
+    logout
+    redirect_to root_path, notice: 'Vous êtes désormais déconnecté.'
+  end
+
 end
 
