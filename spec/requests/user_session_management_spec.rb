@@ -38,7 +38,7 @@ RSpec.describe "User session management" do
 
   describe "activation" do
     before do
-      @user = User.create! email: 'john@doe.com', password: 'secret', password_confirmation: 'secret'
+      @user = create(:user)
 
       get "/users/#{ @user.activation_token }/activate"
     end
@@ -56,12 +56,9 @@ RSpec.describe "User session management" do
 
   describe "login and logout" do
     before do
-      @user = User.create! email: 'john@doe.com',
-                           password: 'secret',
-                           password_confirmation: 'secret'
-      @user.activate!
+      @user = create(:user_activated, password: 'secret')
       payload = {
-        email: 'john@doe.com',
+        email: @user.email,
         password: 'secret',
       }
 
