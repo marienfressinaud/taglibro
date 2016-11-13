@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
   end
   resources :user_sessions, only: [:new, :create]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   get 'login' => 'user_sessions#new', as: :login
+
 end

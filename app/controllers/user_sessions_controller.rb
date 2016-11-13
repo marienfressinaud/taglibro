@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    user = login(params[:email], params[:password])
+    user = login(params[:email], params[:password], params[:remember])
     if user
       redirect_to root_path, notice: 'Vous êtes désormais connecté.'
     else
