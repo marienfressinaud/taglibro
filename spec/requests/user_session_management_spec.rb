@@ -74,8 +74,8 @@ RSpec.describe "User session management" do
       end
     end
 
-    it "redirects to the home page when log in is successful" do
-      expect(response).to redirect_to('/')
+    it "redirects to the diary when log in is successful" do
+      expect(response).to redirect_to('/diary')
       follow_redirect!
       expect(response).to have_http_status(:success)
       expect(response.body).to include(@user.email)
