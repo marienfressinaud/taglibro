@@ -15,8 +15,8 @@ RSpec.describe "User session management" do
       post '/users', params: payload
     end
 
-    it "shows a registration form on home page" do
-      get '/'
+    it "shows a registration form" do
+      get '/register'
 
       assert_select 'form' do
         assert_select 'input[name=?]', 'user[email]'
@@ -81,7 +81,7 @@ RSpec.describe "User session management" do
       expect(response).to redirect_to('/')
       follow_redirect!
       expect(response).to have_http_status(:success)
-      expect(response.body).to include("Bienvenue #{ @user.email }")
+      expect(response.body).to include(@user.email)
     end
   end
 
