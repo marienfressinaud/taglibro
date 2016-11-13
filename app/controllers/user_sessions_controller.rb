@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], params[:remember])
     if user
-      redirect_to root_path, notice: 'Vous êtes désormais connecté.'
+      redirect_to diary_path, notice: 'Vous êtes désormais connecté.'
     else
       flash.now[:alert] = 'La connexion a échoué. Êtes-vous sûr de vos identifiants ?'
       render 'new'
