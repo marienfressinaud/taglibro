@@ -55,16 +55,6 @@ RSpec.describe "User session management" do
   end
 
   describe "login and logout" do
-    before do
-      @user = create(:user_activated, password: 'secret')
-      payload = {
-        email: @user.email,
-        password: 'secret',
-      }
-
-      post '/user_sessions', params: payload
-    end
-
     it "shows a login form" do
       get '/login'
 
@@ -75,19 +65,54 @@ RSpec.describe "User session management" do
     end
 
     it "redirects to the diary when log in is successful" do
+      user = create(:user_activated, password: 'secret')
+      payload = {
+        email: user.email,
+        password: 'secret',
+      }
+      post '/user_sessions', params: payload
+
       expect(response).to redirect_to('/diary')
       follow_redirect!
       expect(response).to have_http_status(:success)
-      expect(response.body).to include(@user.email)
+      expect(response.body).to include(user.email)
     end
 
     it "redirects to the home page when log out is successful" do
+      login
+
       post '/logout'
 
       expect(response).to redirect_to('/')
       follow_redirect!
       expect(response).to have_http_status(:success)
       expect(response.body).to include('Vous êtes désormais déconnecté.')
+    end
+  end
+
+  describe "redirections for logged users" do
+    before do
+      login
+    end
+
+    it "redirects to diary if he tries to access home page" do
+      get '/'
+      expect(response).to redirect_to('/diary')
+    end
+
+    it "redirects to diary if he tries to access registration page" do
+      get '/register'
+      expect(response).to redirect_to('/diary')
+    end
+
+    it "redirects to diary if he tries to access login page" do
+      get '/login'
+      expect(response).to redirect_to('/diary')
+    end
+
+    it "redirects to diary if he tries to access reset password page" do
+      get '/password_resets/new'
+      expect(response).to redirect_to('/diary')
     end
   end
 

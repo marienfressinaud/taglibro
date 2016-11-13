@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
 
+  before_action :require_not_logged, except: [:destroy]
   skip_before_action :require_login
 
   def new

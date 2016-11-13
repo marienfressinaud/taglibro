@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
+  def require_not_logged
+    redirect_to diary_path if current_user
+  end
+
 private
 
   def not_authenticated
