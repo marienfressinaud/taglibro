@@ -1,12 +1,14 @@
 <div class="diary">
-  <%= form_for :thought, url: thoughts_path do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: 'Qu’avez-vous pensé de votre journée ?' %>
-    </div>
+  <% unless current_user.published_today? %>
+    <%= form_for :thought, url: thoughts_path do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: 'Qu’avez-vous pensé de votre journée ?' %>
+      </div>
 
-    <div class="form-group form-group-actions">
-      <%= f.submit %>
-    </div>
+      <div class="form-group form-group-actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
   <% end %>
 
   <% @thoughts.each do |thought| %>
