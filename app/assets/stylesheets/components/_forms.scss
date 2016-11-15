@@ -1,0 +1,73 @@
+.form-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  label {
+    width: 150px;
+    max-width: 100%;
+    padding-top: 4px;
+    padding-right: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    text-align: right;
+    font-weight: bold;
+    font-size: .95rem;
+  }
+
+  &.form-group-actions {
+    margin-left: 150px;
+  }
+
+  &.form-group-checkbox {
+    align-items: center;
+    margin-left: 150px;
+
+    label {
+      text-align: left;
+    }
+  }
+
+  &.form-group-static label {
+    padding-top: 1px;
+  }
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px 10px;
+
+  color: #555;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px #eee inset;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+textarea {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  padding: 8px 10px;
+
+  color: #555;
+  font-family: inherit;
+  font-size: inherit;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px #eee inset;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}

@@ -1,0 +1,23 @@
+.notification-notice {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  color: #fff;
+  text-align: center;
+
+  background-color: $color-success;
+  border-top: 1px solid $color-success-darker;
+  border-bottom: 1px solid $color-success-darker;
+}
+
+.notification-alert {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  color: #fff;
+  text-align: center;
+
+  background-color: $color-danger;
+  border-top: 1px solid $color-danger-darker;
+  border-bottom: 1px solid $color-danger-darker;
+}

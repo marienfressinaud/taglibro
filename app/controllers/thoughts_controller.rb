@@ -1,7 +1,7 @@
 class ThoughtsController < ApplicationController
 
   def index
-    @thoughts = current_user.thoughts
+    @thoughts = current_user.thoughts.order('created_at DESC')
   end
 
   def create

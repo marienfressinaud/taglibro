@@ -1,33 +1,35 @@
-<h1>Inscription</h1>
+<div class="panel">
+  <h1>Inscription</h1>
 
-<%= form_for :user, url: users_path do |f| %>
+  <%= form_for :user, url: users_path do |f| %>
 
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %>
-      <% end %>
-    </ul>
+    <% if @user.errors.any? %>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :email%>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="form-group form-group-actions">
+      <%= f.submit 'S’inscrire', class: 'btn btn-primary' %>
+      <%= link_to 'Vous avez déjà un compte ?', login_path, class: 'btn btn-link' %>
+    </div>
+
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="form-group form-group-actions">
-    <%= f.submit %>
-    <%= link_to 'Vous avez déjà un compte ?', login_path %>
-  </div>
-
-<% end %>
+</div>

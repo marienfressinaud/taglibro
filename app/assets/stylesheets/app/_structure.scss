@@ -1,0 +1,22 @@
+.app-header {
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: #fff;
+  border-bottom: 3px solid $color-primary;
+
+  a:hover {
+    color: $color-primary-darker;
+    text-decoration: none;
+  }
+
+  .row > .separator {
+    flex-grow: 1;
+  }
+}
+
+.app-notifications {
+  margin-top: -30px;
+  margin-bottom: 30px;
+}

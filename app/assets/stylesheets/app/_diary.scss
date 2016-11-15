@@ -1,0 +1,28 @@
+.thoughts-placeholder {
+  padding-top: 20px;
+
+  color: #666;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.thought {
+  margin-bottom: 30px;
+  padding: 20px;
+
+  color: $color-lighter;
+
+  background-color: $color-dark;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px $color-dark;
+}
+
+.thought-content {
+  margin-bottom: 20px;
+
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+}
+.thought-created-at {
+  color: $color-light;
+}
