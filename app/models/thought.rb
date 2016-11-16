@@ -8,7 +8,8 @@ class Thought < ApplicationRecord
 private
 
   def user_publish_once_a_day_only
-    if user.published_today?
+    thought = user.published_on(created_at || DateTime.current).take
+    if thought and thought.id != id
       errors.add(:base, 'Thought can be published once a day only')
     end
   end
