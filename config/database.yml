@@ -14,3 +14,7 @@ development:
 test:
   <<: *default
   database: taglibro_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
