@@ -13,8 +13,7 @@ class PasswordResetsController < ApplicationController
       @user.deliver_reset_password_instructions!
       redirect_to root_path, notice: 'Les instructions pour la réinitialisation de votre mot de passe ont été envoyées par email.'
     else
-      flash.now[:alert] = 'Aucun utilisateur ne semble correspondre à cette adresse email.'
-      render 'new'
+      redirect_to new_password_reset_path, alert: 'Aucun utilisateur ne semble correspondre à cette adresse email.'
     end
   end
 
@@ -23,7 +22,7 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(@token)
 
     if @user.blank?
-      not_authenticated
+      redirect_to root_path
     end
   end
 
@@ -32,15 +31,15 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(@token)
 
     if @user.blank?
-      not_authenticated
+      redirect_to root_path
       return
     end
 
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password!(params[:user][:password])
-      redirect_to root_path, notice: 'Le mot de passe a été correctement réinitialisé.'
+      redirect_to login_path, notice: 'Le mot de passe a été correctement réinitialisé.'
     else
-      render 'edit'
+      redirect_to :back, alert: @user.errors.full_messages.first
     end
   end
 end

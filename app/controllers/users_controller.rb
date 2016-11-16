@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice: "Un mail de confirmation vous a été envoyé à l’adresse #{ @user.email }"
     else
-      render 'new'
+      redirect_to register_path, alert: @user.errors.full_messages.first
     end
   end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       user.activate!
       redirect_to login_path, notice: 'Votre compte a été validé, vous pouvez désormais vous connecter.'
     else
-      not_authenticated
+      redirect_to root_path
     end
   end
 

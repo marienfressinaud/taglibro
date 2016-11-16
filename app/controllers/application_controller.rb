@@ -7,10 +7,4 @@ class ApplicationController < ActionController::Base
     redirect_to diary_path if current_user
   end
 
-private
-
-  def not_authenticated
-    redirect_to login_path, alert: 'Veuillez d’abord vous connecter.'
-  end
-
 end

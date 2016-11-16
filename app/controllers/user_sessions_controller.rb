@@ -11,8 +11,7 @@ class UserSessionsController < ApplicationController
     if user
       redirect_to diary_path, notice: 'Vous êtes désormais connecté.'
     else
-      flash.now[:alert] = 'La connexion a échoué. Êtes-vous sûr de vos identifiants ?'
-      render 'new'
+      redirect_to login_path, alert: 'La connexion a échoué. Êtes-vous sûr de vos identifiants ?'
     end
   end
 
