@@ -1,5 +1,7 @@
 .publisher {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
   padding: 10px 15px;
 
   background-color: #fff;
@@ -8,6 +10,9 @@
   box-shadow: 0 1px 2px $color-primary;
 
   &.publisher-placeholder {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
     color: $color-primary-light;
     font-size: 1.2rem;
     text-align: center;
@@ -16,7 +21,7 @@
 
 .publisher-content textarea {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .publisher-bottom-bar {
