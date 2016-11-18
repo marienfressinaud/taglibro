@@ -1,0 +1,10 @@
+<%= render 'thoughts/navigation' %>
+
+<div class="explore">
+  <% if @thoughts.empty? %>
+    <div class="thoughts-placeholder">
+      Personne n'a rien publié ces dernières 24 heures, et vous&nbsp;?
+    </div>
+  <% end %>
+  <%= render @thoughts %>
+</div>

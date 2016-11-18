@@ -1,3 +1,5 @@
+<%= render 'thoughts/navigation' %>
+
 <div class="diary">
   <% if current_user.published_today? %>
     <div class="publisher publisher-placeholder">
@@ -20,12 +22,5 @@
       Vous n'avez rien publié pour le moment.
     </div>
   <% end %>
-  <% @thoughts.each do |thought| %>
-    <div class="thought">
-      <div class="thought-content"><%= thought.content %></div>
-      <div class="thought-created-at">
-        Le <%= I18n.l thought.created_at, format: :long %>.
-      </div>
-    </div>
-  <% end %>
+  <%= render @thoughts %>
 </div>

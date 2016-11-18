@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :thoughts, only: [:create]
 
   get 'diary' => 'users#diary'
+  get 'explore' => 'thoughts#explore'
 
 end

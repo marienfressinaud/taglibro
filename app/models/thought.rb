@@ -5,6 +5,10 @@ class Thought < ApplicationRecord
   validates :user, presence: true
   validate :user_publish_once_a_day_only
 
+  scope :created_after, -> (datetime) {
+    where('? <= created_at', datetime)
+  }
+
 private
 
   def user_publish_once_a_day_only

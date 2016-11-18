@@ -1,5 +1,9 @@
 class ThoughtsController < ApplicationController
 
+  def explore
+    @thoughts = Thought.created_after(24.hours.ago).order('created_at DESC')
+  end
+
   def create
     thought = Thought.new(create_thought_params)
 
