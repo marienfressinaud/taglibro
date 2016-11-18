@@ -11,7 +11,14 @@
         <%= f.text_area :content, placeholder: 'Qu’avez-vous pensé de votre journée ?' %>
       </div>
 
-      <div class="publisher-submit">
+      <div class="row publisher-bottom-bar">
+        <div class="checkbox-container">
+          <%= f.check_box :is_public %>
+          <%= f.label :is_public, 'Public ?' %>
+        </div>
+
+        <div class="row-extend"></div>
+
         <%= f.submit 'Publier', class: 'btn btn-primary' %>
       </div>
     <% end %>

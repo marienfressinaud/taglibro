@@ -8,6 +8,11 @@ class Thought < ApplicationRecord
   scope :created_after, -> (datetime) {
     where('? <= created_at', datetime)
   }
+  scope :explorable, -> {
+    where(is_public: true)
+  }
+
+  alias_attribute :public?, :is_public
 
 private
 

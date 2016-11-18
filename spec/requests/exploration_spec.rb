@@ -12,15 +12,17 @@ RSpec.describe "Exploration" do
   end
 
   describe "explore" do
-    it "shows all the thoughts from the last 24 hours" do
-      create(:thought, content: 'An old thought', created_at: 25.hours.ago)
-      create(:thought, content: 'My thought', user: @user)
-      create(:thought, content: 'An other thought')
+    it "shows all the public thoughts from the last 24 hours" do
+      create(:thought, :public, content: 'An old thought', created_at: 25.hours.ago)
+      create(:thought, :private, content: 'A private thought')
+      create(:thought, :public, content: 'My thought', user: @user)
+      create(:thought, :public, content: 'An other thought')
 
       get '/explore'
 
       expect(response.body).to include('My thought')
       expect(response.body).to include('An other thought')
+      expect(response.body).to_not include('A private thought')
       expect(response.body).to_not include('An old thought')
     end
   end

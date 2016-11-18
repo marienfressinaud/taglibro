@@ -12,4 +12,8 @@
     flex-grow: 0;
     flex-shrink: 0;
   }
+
+  > .row-extend {
+    flex-grow: 1;
+  }
 }
