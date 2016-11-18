@@ -1,9 +1,5 @@
 class ThoughtsController < ApplicationController
 
-  def index
-    @thoughts = current_user.thoughts.order('created_at DESC')
-  end
-
   def create
     thought = Thought.new(create_thought_params)
 

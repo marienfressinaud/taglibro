@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
 
-  resources :thoughts, only: [:index, :create]
-  get 'diary' => 'thoughts#index'
+  resources :thoughts, only: [:create]
+
+  get 'diary' => 'users#diary'
 
 end

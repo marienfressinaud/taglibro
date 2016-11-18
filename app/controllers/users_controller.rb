@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :require_not_logged
-  skip_before_action :require_login
+  before_action :require_not_logged, only: [:new, :create, :activate]
+  skip_before_action :require_login, only: [:new, :create, :activate]
+
+  def diary
+    @thoughts = current_user.thoughts.order('created_at DESC')
+  end
 
   def new
     @user = User.new
