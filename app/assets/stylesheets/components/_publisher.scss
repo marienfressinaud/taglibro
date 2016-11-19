@@ -19,8 +19,10 @@
   margin-bottom: 5px;
 }
 
-.publisher-submit {
-  text-align: right;
+.publisher-bottom-bar {
+  label {
+    font-weight: bold;
+  }
 
   .btn {
     margin-right: 0;

@@ -7,8 +7,11 @@
 @import 'components/notifications';
 @import 'components/panels';
 @import 'components/publisher';
+@import 'components/thoughts';
 @import 'components/titles';
 
 @import 'app/base';
 @import 'app/structure';
-@import 'app/diary';
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';

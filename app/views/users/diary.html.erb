@@ -1,3 +1,5 @@
+<%= render 'thoughts/navigation' %>
+
 <div class="diary">
   <% if current_user.published_today? %>
     <div class="publisher publisher-placeholder">
@@ -9,7 +11,14 @@
         <%= f.text_area :content, placeholder: 'Qu’avez-vous pensé de votre journée ?' %>
       </div>
 
-      <div class="publisher-submit">
+      <div class="row publisher-bottom-bar">
+        <div class="checkbox-container">
+          <%= f.check_box :is_public %>
+          <%= f.label :is_public, 'Public ?' %>
+        </div>
+
+        <div class="row-extend"></div>
+
         <%= f.submit 'Publier', class: 'btn btn-primary' %>
       </div>
     <% end %>
@@ -20,12 +29,5 @@
       Vous n'avez rien publié pour le moment.
     </div>
   <% end %>
-  <% @thoughts.each do |thought| %>
-    <div class="thought">
-      <div class="thought-content"><%= thought.content %></div>
-      <div class="thought-created-at">
-        Le <%= I18n.l thought.created_at, format: :long %>.
-      </div>
-    </div>
-  <% end %>
+  <%= render @thoughts %>
 </div>

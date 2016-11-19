@@ -21,16 +21,23 @@
   }
 
   &.form-group-checkbox {
-    align-items: center;
     margin-left: 150px;
-
-    label {
-      text-align: left;
-    }
   }
 
   &.form-group-static label {
     padding-top: 1px;
+  }
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+
+  label {
+    padding-left: 5px;
+    padding-top: 1px;
+
+    text-align: left;
   }
 }
 

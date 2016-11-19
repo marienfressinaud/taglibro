@@ -67,6 +67,11 @@ RSpec.describe "Publication" do
       expect(thought.created_at).to eq(DateTime.current)
     end
 
+    it "creates a private thought by default" do
+      thought = @user.thoughts.first
+      expect(thought.public?).to be(false)
+    end
+
     it "redirects on the diary page" do
       expect(response).to redirect_to(diary_path)
       follow_redirect!

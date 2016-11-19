@@ -1,7 +1,9 @@
 class ThoughtsController < ApplicationController
 
-  def index
-    @thoughts = current_user.thoughts.order('created_at DESC')
+  def explore
+    @thoughts = Thought.explorable
+                       .created_after(24.hours.ago)
+                       .order('created_at DESC')
   end
 
   def create
@@ -17,7 +19,8 @@ class ThoughtsController < ApplicationController
 private
 
   def create_thought_params
-    params.require(:thought).permit(:content).merge(user: current_user)
+    params.require(:thought).permit(:content, :is_public)
+                            .merge(user: current_user)
   end
 
 end

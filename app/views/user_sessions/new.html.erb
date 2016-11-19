@@ -14,8 +14,10 @@
     </div>
 
     <div class="form-group form-group-checkbox">
-      <%= check_box_tag :remember, params[:remember], true %>
-      <%= label_tag :remember, 'Rester connecté' %>
+      <div class="checkbox-container">
+        <%= check_box_tag :remember, params[:remember], true %>
+        <%= label_tag :remember, 'Rester connecté' %>
+      </div>
     </div>
 
     <div class="form-group form-group-actions">

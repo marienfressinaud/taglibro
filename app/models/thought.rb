@@ -5,6 +5,15 @@ class Thought < ApplicationRecord
   validates :user, presence: true
   validate :user_publish_once_a_day_only
 
+  scope :created_after, -> (datetime) {
+    where('? <= created_at', datetime)
+  }
+  scope :explorable, -> {
+    where(is_public: true)
+  }
+
+  alias_attribute :public?, :is_public
+
 private
 
   def user_publish_once_a_day_only

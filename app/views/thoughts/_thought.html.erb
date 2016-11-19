@@ -1,0 +1,17 @@
+<div class="thought">
+  <div class="thought-content"><%= thought.content %></div>
+
+  <div class="row">
+    <div class="row-extend thought-created-at">
+      Le <%= I18n.l thought.created_at, format: :long %>.
+    </div>
+
+    <div class="thought-visibility">
+      <% if thought.public? %>
+        <%= icon('unlock', 'Public') %>
+      <% else %>
+        <%= icon('lock', 'Privé') %>
+      <% end %>
+    </div>
+  </div>
+</div>
