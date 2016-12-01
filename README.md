@@ -21,7 +21,6 @@ Il reste à documenter :
 
 - la configuration
 - la création et initialisation de la base de données
-- le lancement de la suite de tests
 - la phase de déploiement
 - les différentes manières de contribuer
 
@@ -68,3 +67,23 @@ fichier `.git/config`:
 
 Ce message force la structure du message de commit pour le rendre plus
 explicite.
+
+## Tests
+
+Les tests sont écrits à l'aide de [RSpec](http://rspec.info/). Pour lancer la
+suite de tests, exécutez simplement :
+
+```bash
+$ bundle exec rspec
+```
+
+Les bibliothèques suivantes sont aussi utilisées :
+
+- [Timecop](https://github.com/travisjeffery/timecop) pour tester facilement
+  les fonctionnalités basées sur le temps
+- [FactoryGirl](https://github.com/thoughtbot/factory_girl) pour ne pas se
+  prendre la tête lors de la création des modèles
+
+La suite de tests est automatiquement exécutée [sur Travis](https://travis-ci.org/marienfressinaud/taglibro)
+dès lors que des commits sont poussés sur une branche. Les « pull requests »
+doivent impérativement passer les tests pour pouvoir être mergées.
