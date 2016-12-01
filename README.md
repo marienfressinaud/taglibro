@@ -20,7 +20,6 @@ L'application devrait se lancer sur http://localhost:3000.
 Il reste à documenter :
 
 - la configuration
-- la création et initialisation de la base de données
 - la phase de déploiement
 - les différentes manières de contribuer
 
@@ -29,7 +28,10 @@ https://github.com/marienfressinaud/taglibro/projects/1 (i.e. projet MVP).
 
 ## Développement
 
-### Configuration de PostgreSQL
+### Initialisation de la base de données
+
+La base de données utilisée étant PostgreSQL, assurez-vous qu'une telle base
+fonctionne sur votre ordinateur.
 
 La configuration présente dans `config/database.yml` implique que nous nous
 basons sur le nom de l'utilisateur Linux actuellement connecté. Pour configurer
@@ -50,6 +52,13 @@ $ sudo vim /var/lib/pgsql/data/pg_hba.conf
 - host    all             all             ::1/128                 ident
 + host    all             all             ::1/128                 trust
 $ sudo systemctl restart postgresql
+```
+
+Une fois que votre base de données est configurée, il ne vous reste plus qu'à
+l'initialiser avec la commande suivante :
+
+```bash
+$ bundle exec rails db:setup
 ```
 
 ### Messages de commit
