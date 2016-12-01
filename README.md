@@ -11,16 +11,18 @@ Si vous souhaitez lancer l'application malgré tout, assurez-vous d'avoir Ruby
 de travail. Ensuite, lancez ces quelques commandes :
 
 ```bash
-$ bin/bundle install
-$ bin/rails s
+$ bundle install
+$ bundle exec rails db:setup
+$ bundle exec rails s
 ```
 
 L'application devrait se lancer sur http://localhost:3000.
 
+Si vous rencontrez le moindre soucis, plus d'informations sont disponibles dans
+la suite de ce README.
+
 Il reste à documenter :
 
-- la configuration
-- la phase de déploiement
 - les différentes manières de contribuer
 
 Pour ce qui est du suivi du projet, tout se passe pour le moment sur GitHub :
@@ -96,3 +98,59 @@ Les bibliothèques suivantes sont aussi utilisées :
 La suite de tests est automatiquement exécutée [sur Travis](https://travis-ci.org/marienfressinaud/taglibro)
 dès lors que des commits sont poussés sur une branche. Les « pull requests »
 doivent impérativement passer les tests pour pouvoir être mergées.
+
+## Déploiement
+
+Taglibro est actuellement automatiquement déployé sur la plateforme Heroku. Son
+utilisation est pas conséquent **vivement déconseillée**. En effet, les données
+sont stockées sur les serveurs d'Amazon, connu pour son appétit toujours
+insatiable en données. Si vous souhaitez utiliser Taglibro, je ne peux que vous
+conseiller de l'installer chez vous.
+
+Pour se faire, voici un bout de documentation probablement incomplète vu que je
+ne l'ai pas testée moi-même !
+
+Tout d'abord, assurez-vous d'avoir une base de données PostgreSQL accessible
+par l'application (des indications sont données plus haut).
+
+Aussi, assurez-vous d'avoir Ruby 2.3 installé sur votre machine avec la gem
+`bundler` puis exécutez les commandes suivantes :
+
+```bash
+$ git clone git@github.com:marienfressinaud/taglibro.git
+$ cd taglibro
+$ bundle install
+$ bundle exec rails db:setup
+$ bundle exec rails assets:precompile
+```
+
+Aussi, vérifiez que les variables d'environnement sont indiquées :
+
+```
+$ export RAILS_ENV=production
+$ export HOSTNAME=<l'url vers votre application>
+$ export RAILS_SERVE_STATIC_FILES=enabled
+$ export DATABASE_URL=<l'url vers votre base de données… oui c'est orienté
+"heroku" :(>
+$ export SECRET_KEY_BASE=`RAILS_ENV=production bundle exec rake secret`
+```
+
+Ces variables d'environnement peuvent évidemment être mises dans un fichier
+`.bashrc` ou similaire.
+
+Dernier point (et non le moindre), Taglibro est actuellement prévu pour envoyer
+les mails à l'aide de [Sendgrid](https://sendgrid.com/). Il vous faudra donc
+vous créer un compte sur ce service et configurer ensuite taglibro en
+renseignant les deux variables suivantes :
+
+```bash
+$ export SENDGRID_USERNAME=<nom d'utilisateur Sendgrid>
+$ export SENDGRID_PASSWORD=<mot de passe Sendgrid>
+```
+
+Évidemment l'idéal serait de ne pas être dépendant de Sendgrid !
+
+Ensuite il vous restera à configurer un proxy HTTP sur le port 80 et/ou 443
+pour servir votre application Rails. Je conseille Nginx pour cela mais comme je
+ne suis pas passé par cette étape, je vous renvoie vers de la documentation de
+DigitalOcean qui est généralement pas mal : https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-unicorn-and-nginx-on-ubuntu-14-04
