@@ -3,8 +3,7 @@
 Ceci est une version préliminaire de Taglibro, un réseau social anonyme sous
 forme de "journal intime".
 
-Pour le moment je mets encore en place les différents outils de développement
-et de déploiement donc les choses vont pas mal bouger.
+Ce projet est avant tout personnel et à titre d'essai.
 
 Si vous souhaitez lancer l'application malgré tout, assurez-vous d'avoir Ruby
 2.3 installé sur votre PC et de cloner le dépôt de Taglibro dans votre espace
@@ -21,16 +20,9 @@ L'application devrait se lancer sur http://localhost:3000.
 Si vous rencontrez le moindre soucis, plus d'informations sont disponibles dans
 la suite de ce README.
 
-Il reste à documenter :
+Si vous comptez contribuer, assurez-vous d'avoir lu le fichier `CONTRIBUTING.md`.
 
-- les différentes manières de contribuer
-
-Pour ce qui est du suivi du projet, tout se passe pour le moment sur GitHub :
-https://github.com/marienfressinaud/taglibro/projects/1 (i.e. projet MVP).
-
-## Développement
-
-### Initialisation de la base de données
+## Initialisation de la base de données
 
 La base de données utilisée étant PostgreSQL, assurez-vous qu'une telle base
 fonctionne sur votre ordinateur.
@@ -62,22 +54,6 @@ l'initialiser avec la commande suivante :
 ```bash
 $ bundle exec rails db:setup
 ```
-
-### Messages de commit
-
-Afin de garder un historique clair et de pouvoir générer un changelog
-facilement, il est recommandé de configurer Git pour qu'il prenne en compte le
-message de template de commit fourni dans `.gitmessage`. Pour cela, éditez le
-fichier `.git/config`:
-
-```
-...
-[commit]
-  template: .gitmessage
-```
-
-Ce message force la structure du message de commit pour le rendre plus
-explicite.
 
 ## Tests
 
